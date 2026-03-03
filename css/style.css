@@ -252,11 +252,11 @@ h4 {
 
 /* ---------- Hero ---------- */
 .hero {
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 8rem 0 var(--section-gap);
+  padding: 10rem 0 var(--section-gap);
   position: relative;
   overflow: hidden;
 }
@@ -725,7 +725,7 @@ h4 {
 
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
 
-  .hero { min-height: 80vh; padding-top: 6rem; }
+  .hero { min-height: auto; padding-top: 6rem; }
 
   .stats { flex-direction: column; gap: 1.5rem; }
 
