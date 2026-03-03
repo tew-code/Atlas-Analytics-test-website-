@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(export PATH=\"/opt/homebrew/bin:$PATH\")",
+      "Bash(npm init -y)",
+      "Bash(npm install puppeteer)",
+      "Bash(npm view @splinetool/viewer version)",
+      "Bash(curl -sI \"https://my.spline.design/2ep7orRzULtuzAR8/\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8080)",
+      "Bash(gh repo view Atlas-Analytics-test-website)"
+    ]
+  }
+}

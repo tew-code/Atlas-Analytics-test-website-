@@ -1,0 +1,118 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+# Logo in CMS
+logo_url: "/images/logo.svg"
+
+collections:
+
+  # ── Blog Posts ──
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Category", name: "category", widget: "select", options: ["outbound", "strategy", "video", "data", "ai", "case-study"], default: "strategy" }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Excerpt", name: "excerpt", widget: "text", hint: "Short summary for blog listing (1-2 sentences)" }
+      - { label: "Author", name: "author", widget: "relation", collection: "team", search_fields: ["name"], value_field: "name", display_fields: ["name"], required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ── Case Studies ──
+  - name: "case-studies"
+    label: "Case Studies"
+    folder: "case-studies"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Client Name", name: "title", widget: "string" }
+      - { label: "Client Logo", name: "logo", widget: "image", required: false }
+      - { label: "Industry", name: "industry", widget: "string" }
+      - { label: "Contact Person", name: "contact", widget: "string", hint: "Name and title of the person quoted" }
+      - { label: "Challenge", name: "challenge", widget: "text", hint: "1-2 sentence challenge description" }
+      - { label: "Solution", name: "solution", widget: "text", hint: "1-2 sentence solution description" }
+      - { label: "Key Metric", name: "metric", widget: "string", hint: "e.g. 3x more meetings than expected" }
+      - { label: "Testimonial Quote", name: "quote", widget: "text" }
+      - { label: "Date of Engagement", name: "date", widget: "datetime" }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - { label: "Full Story", name: "body", widget: "markdown", required: false }
+
+  # ── Team Members ──
+  - name: "team"
+    label: "Team Members"
+    folder: "_data/team"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Role", name: "role", widget: "string" }
+      - { label: "Photo", name: "photo", widget: "image", required: false }
+      - { label: "Bio", name: "bio", widget: "text", hint: "1-2 sentences max. Lead with what this person does for clients." }
+      - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
+      - { label: "Email", name: "email", widget: "string", required: false }
+      - { label: "Order", name: "order", widget: "number", default: 0, hint: "Display order (lower = first)" }
+
+  # ── Testimonials ──
+  - name: "testimonials"
+    label: "Testimonials"
+    folder: "_data/testimonials"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Client Name", name: "title", widget: "string" }
+      - { label: "Contact Name", name: "contact", widget: "string" }
+      - { label: "Contact Title", name: "contact_title", widget: "string", required: false }
+      - { label: "Quote", name: "quote", widget: "text" }
+      - { label: "Company Logo", name: "logo", widget: "image", required: false }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - { label: "Order", name: "order", widget: "number", default: 0 }
+
+  # ── Events ──
+  - name: "events"
+    label: "Events"
+    folder: "_data/events"
+    create: true
+    slug: "{{year}}-{{month}}-{{slug}}"
+    fields:
+      - { label: "Event Name", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "End Date", name: "end_date", widget: "datetime", required: false }
+      - { label: "Location", name: "location", widget: "string" }
+      - { label: "Type", name: "type", widget: "select", options: ["conference", "webinar", "workshop", "meetup"], default: "conference" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Registration Link", name: "link", widget: "string", required: false }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+
+  # ── Site Settings ──
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "General"
+        name: "general"
+        file: "_data/settings.yml"
+        fields:
+          - { label: "Site Title", name: "site_title", widget: "string", default: "ATLAS ANALYTICS" }
+          - { label: "Tagline", name: "tagline", widget: "string", default: "Your Sales Team Closes. We Fill the Pipeline." }
+          - { label: "Contact Email", name: "contact_email", widget: "string", default: "hello@atlasanalytics.com" }
+          - { label: "Phone", name: "phone", widget: "string", required: false }
+          - { label: "LinkedIn URL", name: "linkedin", widget: "string", required: false }
+          - label: "Stats"
+            name: "stats"
+            widget: "object"
+            fields:
+              - { label: "Campaigns Delivered", name: "campaigns", widget: "string", default: "1,200+" }
+              - { label: "Verified Contacts", name: "contacts", widget: "string", default: "100M+" }
+              - { label: "Data Sources", name: "sources", widget: "string", default: "35+" }
+              - { label: "Teams Served", name: "teams", widget: "string", default: "50+" }
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - { label: "Copyright Text", name: "copyright", widget: "string", default: "ATLAS ANALYTICS. All rights reserved." }
