@@ -525,6 +525,15 @@ h4 {
   line-height: 1.6;
 }
 
+.footer-linkedin {
+  display: inline-block;
+  font-size: 0.875rem;
+  color: var(--text-light);
+  margin-top: 0.75rem;
+  transition: color 0.2s var(--ease);
+}
+.footer-linkedin:hover { color: var(--gold); }
+
 .footer-col h5 {
   font-family: var(--font-body);
   font-size: 0.75rem;
